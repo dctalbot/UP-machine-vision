@@ -1,0 +1,9 @@
+{% block head %}
+<link href="{{ url_for('static', filename='css/header.scss.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+<header>
+    <span class="vertical-align-helper"></span>
+    <a href="{{url_for('home')}}">
+    <img src="{{url_for('download_img', filename='train.png')}}"/>
+    </a>
+</header>

@@ -1,0 +1,47 @@
+#courses-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  margin: 0px;
+  width: 450px;
+  height: 120px !important;
+}
+
+.pt-intent-danger-wrapper {
+  input,
+  textarea {
+    -webkit-box-shadow: 0 0 0 0 rgba(219, 55, 55, 0),
+      0 0 0 0 rgba(219, 55, 55, 0), inset 0 0 0 1px #db3737,
+      inset 0 0 0 1px rgba(16, 22, 26, 0.15),
+      inset 0 1px 1px rgba(16, 22, 26, 0.2);
+    box-shadow: 0 0 0 0 rgba(219, 55, 55, 0), 0 0 0 0 rgba(219, 55, 55, 0),
+      inset 0 0 0 1px #db3737, inset 0 0 0 1px rgba(16, 22, 26, 0.15),
+      inset 0 1px 1px rgba(16, 22, 26, 0.2);
+  }
+}
+
+.halves-wrapper {
+  display: flex;
+  div {
+    flex: 1;
+  }
+
+  .website-summary {
+    .summary-item {
+      h5,
+      p {
+        display: inline-block;
+      }
+
+      p {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .website-form form textarea {
+    width: 75%;
+  }
+}

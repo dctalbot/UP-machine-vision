@@ -1,0 +1,48 @@
+#home-wrapper {
+  display: flex;
+  height: 100%;
+
+  section {
+    flex: 1;
+    max-width: 50%;
+  }
+
+  #home-left-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #home-right-panel {
+    display: flex;
+    flex-direction: column;
+
+    .half-vertical-panel {
+      flex: 1;
+    }
+
+    hr {
+      width: 85%;
+      align-self: center;
+    }
+  }
+}
+
+// BLUEPRINTJS
+ul.pt-menu {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropzone {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-width: 2px;
+  border-color: rgb(102, 102, 102);
+  border-style: dashed;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}

@@ -1,0 +1,13 @@
+*~
+*.log
+*.egg-info/
+*.pyc
+.DS_Store
+__pycache__/
+env/
+bin/
+website/static/css
+website/static/dist
+node_modules
+docs/*
+!docs/.gitkeep

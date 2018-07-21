@@ -1,0 +1,10 @@
+# source me to run with awesomeness!
+
+export FLASK_APP=website
+export FLASK_ENV=development
+
+# For testing access/roles/permissions without
+# Cosign in front of the app.  If $USER on your
+# dev machine is your uniqname, this will be you.
+export DEFAULT_USER=$USER
+export WSGI_AUTH_CREDENTIALS=sheep:camel

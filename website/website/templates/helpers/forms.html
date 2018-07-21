@@ -1,0 +1,175 @@
+<!-- text input -->
+{%- macro pt_text_input(field) %}
+<div class="pt-form-group {{'pt-intent-danger' if field.errors}}">
+
+  <label for="{{ field.label.field_id }}" class="pt-label">
+    {{ field.label.text }}
+    {% if field.flags.required %}
+    <span class="pt-text-muted">(required)</span>
+    {% endif %}
+  </label>
+
+  <span class="pt-form-content {{'pt-intent-danger-wrapper' if field.errors}}">
+    {{ field(*varargs, **kwargs) }}
+  </span>
+
+  <div class="pt-form-helper-text">
+  {% for error in field.errors %}
+  {{ error }}
+  {% endfor %}
+  </div>
+</div>
+{%- endmacro %}
+
+
+<!-- radio input -->
+{%- macro pt_radio_input(field) %}
+<div class="pt-form-group {{'pt-intent-danger' if field.errors}}">
+
+  <label class="pt-label">
+    {{ field.label.text }}
+    {% if field.flags.required %}
+    <span class="pt-text-muted">(required)</span>
+    {% endif %}
+  </label>
+
+  {% for option in field %}
+  <label for="{{ option.label.field_id }}" class="pt-control pt-radio">
+    {{ option }}
+    <span class="pt-control-indicator"></span>
+    {{ option.label }}
+  </label>
+  {% endfor %}
+
+  {% for error in field.errors %}
+  <div class="pt-form-helper-text">{{ error }}</div>
+  {% endfor %}
+
+</div>
+{%- endmacro %}
+
+
+
+<!-- select input -->
+{%- macro pt_select_input(field) %}
+<div class="pt-form-group block">
+  <label for="{{ field.label.field_id }}" class="pt-label">
+    {{ field.label.text }}
+    {% if field.flags.required %}
+    <span class="pt-text-muted">(required)</span>
+    {% endif %}
+  </label>
+
+  <div class="pt-select">
+    {{ field(*varargs, **kwargs) }}
+  </div>
+
+  {% for error in field.errors %}
+  <div class="pt-form-helper-text">{{ error }}</div>
+  {% endfor %}
+</div>
+{%- endmacro %}
+
+
+
+<!-- hidden input -->
+{%- macro hidden_input(field) %}
+<span style="display:none;">
+  {{ field(*varargs, **kwargs) }}
+</span>
+{%- endmacro %}
+
+
+
+<!-- boolean input -->
+{%- macro pt_boolean_input(field) %}
+<div class="pt-form-group {{'pt-intent-danger' if field.errors}}">
+
+  <label for="{{ field.label.field_id }}" class="pt-label">
+    {{ field.label.text }}
+    {% if field.flags.required %}
+    <span class="pt-text-muted">(required)</span>
+    {% endif %}
+  </label>
+
+  <div class="pt-form-content">
+    <label class="pt-control pt-switch">
+    {{ field(*varargs, **kwargs) }}
+    <span class="pt-control-indicator"></span>
+    <!-- switch text would go here -->
+    </label>
+  </div>
+
+  <div class="pt-form-helper-text">
+  {% for error in field.errors %}
+  {{ error }}
+  {% endfor %}
+  </div>
+
+</div>
+{%- endmacro %}
+
+
+
+<!-- multiselect input -->
+{%- macro pt_multiselect_input(field) %}
+<div class="pt-form-group {{'pt-intent-danger' if field.errors}}">
+
+  <label for="{{ field.label.field_id }}" class="pt-label">
+    {{ field.label.text }}
+    {% if field.flags.required %}
+    <span class="pt-text-muted">(required)</span>
+    {% endif %}
+  </label>
+
+  {% for option in field %}
+  <div class="pt-form-content">
+    <label class="pt-control pt-switch">
+    {{option}}
+    <span class="pt-control-indicator"></span>
+    {{ option.label.text }}
+    </label>
+  </div>
+  {% endfor %}
+
+  {% for error in field.errors %}
+  <div class="pt-form-helper-text">{{ error }}</div>
+  {% endfor %}
+
+</div>
+{%- endmacro %}
+
+
+<!-- checkboxes input -->
+{%- macro pt_checkbox_input(field) %}
+<div class="pt-form-group {{'pt-intent-danger' if field.errors}}">
+
+  <label for="{{ field.label.field_id }}" class="pt-label">
+    {{ field.label.text }}
+    {% if field.flags.required %}
+    <span class="pt-text-muted">(required)</span>
+    {% endif %}
+  </label>
+
+  {% for option in field %}
+  <div class="pt-form-content">
+    <label class="pt-control pt-checkbox">
+    {{option}}
+    <span class="pt-control-indicator"></span>
+    {{ option.label.text }}
+    </label>
+  </div>
+  {% endfor %}
+
+  {% for error in field.errors %}
+  <div class="pt-form-helper-text">{{ error }}</div>
+  {% endfor %}
+
+</div>
+{%- endmacro %}
+
+
+<!-- form submit -->
+{%- macro pt_submit_button(field) %}
+  <button type="submit" value="submit" class="pt-button">{{field.label.text}}</button>
+{%- endmacro %}

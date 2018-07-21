@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>{{self.title()}}</title>
+    <meta charset="utf-8">
+    <meta content="UMich Course Approval Request Form System" name="description">
+
+    <link href="{{ url_for('static', filename='css/index.scss.css') }}" rel="stylesheet" type="text/css">
+
+    <link rel="canonical" href="http://www.engin.umich.edu/college/admissions/faqs">
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.engin.umich.edu/favicon.ico">
+    {{self.head()}}
+  </head>
+
+  <body>
+    <div id="site-wrapper">
+      {% include "header.html" %}
+      <div id="content-wrapper">
+      {% block content %}{% endblock%}
+      </div>
+      {% include "footer.html" %}
+    </div>
+    <!-- bundled JS from webpacker -->
+    <script src="{{ url_for('static', filename='dist/bundle.js') }}" type="text/javascript"></script>
+  </body>
+</html>

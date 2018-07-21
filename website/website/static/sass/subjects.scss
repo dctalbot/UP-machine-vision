@@ -1,0 +1,10 @@
+#subjects-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+// BLUEPRINTJS
+ul.pt-menu {
+  max-height: 200px;
+  overflow-y: auto;
+}

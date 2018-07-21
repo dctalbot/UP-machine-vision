@@ -1,0 +1,20 @@
+{% block head %}
+<link href="{{ url_for('static', filename='css/footer.scss.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+<footer>
+    <div id="footer-logo">
+      <img  src="{{url_for('download_img', filename='logo.png')}}"/>
+    </div>
+    <div id="footer-contact">
+      <p>
+        <a href="#">Team Drop Table Trains</a>
+      </p>
+      <p>
+        <a href="#">UP Hackathon 2018</a>
+      </p>
+      <p>
+        <a href="#">Contact the Team</a></p>
+      
+    </div>
+
+</footer>

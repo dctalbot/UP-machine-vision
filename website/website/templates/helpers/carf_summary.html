@@ -1,0 +1,58 @@
+
+{%- macro summarize(website) %}
+<div class="website-summary">
+
+  <div class="summary-item">
+    <h5>{{'COE_HOME_SUBJECT_DESCRIPTION'|humanize_label}}:</h5>
+    <p>{{website.COE_HOME_SUBJECT_DESCRIPTION}}</p>
+  </div>
+
+  <div class="summary-item">
+    <h5>{{'CATALOG_NUMBER'|humanize_label}}:</h5>
+    <p>{{website.COE_HOME_SUBJECT}} {{website.CATALOG_NUMBER}}</p>
+  </div>
+
+  <div class="summary-item">
+    <h5>{{'RECORD_LAST_UPDATE_DATE_TIME'|humanize_label}}:</h5>
+    <!-- uncomment this when justin/tom sets up timestamps -->
+    <!-- <p>website.RECORD_LAST_UPDATE_DATE_TIME|pretty_date</p> -->
+  </div>
+
+  <div class="summary-item">
+    <h5>{{'COURSE_TITLE'|humanize_label}}:</h5>
+    <p>{{website.COURSE_TITLE}}</p>
+  </div>
+
+  <div class="summary-item">
+    <h5>{{'ABBREVIATED_TITLE'|humanize_label}}:</h5>
+    <p>{{website.ABBREVIATED_TITLE}}</p>
+  </div>
+
+  <div class="summary-item">
+    <h5>{{'COURSE_DESCRIPTION_TEXT'|humanize_label}}:</h5>
+    <p>{{website.COURSE_DESCRIPTION_TEXT}}</p>
+  </div>
+
+  <div class="summary-item">
+    <h5>{{'INSTRUCTOR_CONSENT_ALWAYS_REQUIRED_INDICATOR'|humanize_label}}:</h5>
+    <p>{{'Yes' if website.INSTRUCTOR_CONSENT_ALWAYS_REQUIRED_INDICATOR else 'No'}}</p>
+  </div>
+
+  <div class="summary-item">
+    <h5>{{'MINIMUM_GRADE_REQUIRED'|humanize_label}}:</h5>
+    <p>{{website.MINIMUM_GRADE_REQUIRED}}</p>
+  </div>
+
+  <div class="summary-item">
+    <h5>{{'CLASS_LENGTH'|humanize_label}}:</h5>
+    <p>{{website.CLASS_LENGTH}}</p>
+  </div>
+
+  <div class="summary-item">
+    <h5>{{'FACULTY_FULL_NAME'|humanize_label}}:</h5>
+    <p>{{website.FACULTY_LAST_NAME + ', ' + website.FACULTY_FIRST_NAME}}</p>
+  </div>
+
+
+</div>
+{%- endmacro %}
