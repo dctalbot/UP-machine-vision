@@ -4,6 +4,7 @@ import { render } from "react-dom";
 // import CourseSearch from './CourseSearch'
 import FAQs from "./FAQs";
 import Upload from "./Upload";
+import Stats from "./Stats";
 import { Intent, Spinner } from "@blueprintjs/core";
 
 require("@blueprintjs/core/lib/css/blueprint.css");
@@ -19,14 +20,15 @@ require("@blueprintjs/icons/lib/css/blueprint-icons.css");
 //   render(<CourseSearch />, CourseSearchContainer)
 // }
 //
-const FAQsContainer = document.getElementById("react-faqs");
-if (FAQsContainer) {
-  render(<FAQs />, FAQsContainer);
-}
 
 const UploadContainer = document.getElementById("react-image-upload");
 if (UploadContainer) {
   render(<Upload />, UploadContainer);
+}
+
+const StatsContainer = document.getElementById("react-stats");
+if (StatsContainer) {
+  render(<Stats />, StatsContainer);
 }
 
 // ReactDOM.render(

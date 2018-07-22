@@ -11,6 +11,7 @@ import tensorflow as tf
 from website import app
 from werkzeug.utils import secure_filename
 from flask import render_template, url_for, request, redirect, g, session
+from website.config import IMAGES_FOLDER
 
 
 # ==============================
@@ -39,6 +40,7 @@ def home():
         file = request.files.get('file', '')
         filename = secure_filename(file.filename)
         file_dest = os.path.dirname(__file__) + '/uploads/' + filename
+        file_dest = IMAGES_FOLDER + filename
         file.save(file_dest)
 
     return render_template("index.html", **context)
@@ -53,10 +55,14 @@ def test(filename):
     }
 
     file_dest = os.path.dirname(__file__) + '/uploads/' + filename
-    result = run_image_label(file_dest, 'image_type')
-    context['type'] = result
+    # results = run_image_label(file_dest, 'image_type')
+    results = [0.27753016, 0.7224698]
+    context['normal_pct'] = results[1]
+    context['broken_pct'] = results[0]
 
-    return render_template("index.html", **context)
+    context['filename'] = filename
+
+    return render_template("stats.html", **context)
 
 
 def run_image_label(file_name, image_type):
@@ -99,7 +105,7 @@ def run_image_label(file_name, image_type):
     for i in top_k:
       print(labels[i], results[i])
 
-    return results[1]
+    return results
 
 
 def load_graph(model_file):

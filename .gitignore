@@ -7,3 +7,4 @@
 /tensorflow-image-classifier
 /website/node_modules
 *.png
+/node_modules

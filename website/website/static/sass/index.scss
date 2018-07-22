@@ -3,7 +3,7 @@
 // @import "~@blueprintjs/core/lib/css/blueprint.css";
 // @import '~blueprint_icons';
 // @import "../../~@blueprintjs/core/lib/css/blueprint.css";
-@import 'globals';
+@import "globals";
 
 html,
 body {
@@ -59,4 +59,8 @@ h3 {
   display: block !important;
   display: -webkit-box !important;
   display: -ms-flexbox !important;
+}
+
+#results-table {
+  margin-bottom: 20px;
 }

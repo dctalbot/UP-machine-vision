@@ -8,7 +8,7 @@ WTF_CSRF_ENABLED = True
 SECRET_KEY = 'qoOOpYr3q89c'
 EXPLAIN_TEMPLATE_LOADING = False
 
-UPLOAD_FOLDER = '/uploads'
+
 ALLOWED_EXTENSIONS = set(['jpg'])
 
 # some friendly defaults for db connections
@@ -30,12 +30,7 @@ ALLOWED_EXTENSIONS = set(['jpg'])
 CSS_FOLDER = basedir + '/website/static/css/'
 IMAGES_FOLDER = basedir + '/website/static/img/'
 JS_FOLDER = basedir + '/website/static/dist/'
+UPLOADS_FOLDER = basedir + '/website/views/uploads/'
 
 # template paths
 ABORT_TEMPLATES = basedir + '/website/templates/abort/'
-SUBJECTS_TEMPLATES = basedir + 'website/templates/subjects/'
-COURSES_TEMPLATES = basedir + 'website/templates/courses/'
-EXPORT_TEMPLATES = basedir + 'website/templates/export/'
-
-# registrar PDF template path
-RO_TEMPLATE = basedir + '/website/templates/export/template.html'

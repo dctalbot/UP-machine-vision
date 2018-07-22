@@ -1,0 +1,42 @@
+{% extends "base-template.html" %}
+{% block title %}{% endblock %}
+{% block head %}
+<link href="{{ url_for('static', filename='css/home.scss.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content%}
+
+<div id="home-wrapper">
+
+  <section id="home-left-panel">
+    <img style="height: 400px;" src="{{url_for('download_img', filename=filename)}}"/>
+  </section>
+
+  <section id="home-right-panel">
+
+    <input id="normal_pct" type=hidden value={{normal_pct}} />
+    <input id="broken_pct" type=hidden value={{broken_pct}} />
+
+    <table id="results-table" class="pt-html-table pt-html-table-bordered pt-small pt-html-table-striped ">
+      <thead>
+        <tr>
+          <th>Normal</th>
+          <th>Broken</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{normal_pct}}</td>
+          <td>{{broken_pct}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="react-stats">
+
+    </div>
+  </section>
+
+</div>
+
+
+
+{% endblock %}
