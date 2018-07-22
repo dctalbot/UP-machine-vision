@@ -23,9 +23,13 @@ export default class Stats extends React.Component {
     console.log("mounted");
     const n = document.getElementById("normal_pct").value;
     const b = document.getElementById("broken_pct").value;
+    const nl = document.getElementById("normal_label").value;
+    const bl = document.getElementById("broken_label").value;
     this.setState({
       normal: n,
-      broken: b
+      broken: b,
+      nl: nl,
+      bl: bl
     });
   }
 
@@ -42,7 +46,7 @@ export default class Stats extends React.Component {
             ],
 
             // These labels appear in the legend and in the tooltips when hovering different arcs
-            labels: ["Normal", "Broken"]
+            labels: [this.state.nl, this.state.bl]
           }}
         />
       </Container>

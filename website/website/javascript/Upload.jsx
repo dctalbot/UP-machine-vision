@@ -71,27 +71,27 @@ export default class Upload extends React.Component {
   render() {
     return (
       <Container>
-        <Select
-          items={[{ name: "Springs" }, { name: "Wheels" }, { name: "Brakes" }]}
-          itemRenderer={this.itemRenderer}
-          onItemSelect={this.onItemSelect.bind(this)}
-          filterable={false}
-        >
-          <Button text={this.state.selected} rightIcon="caret-down" />
-        </Select>
-
         <FormGroup
           helperText="Your image will be classified upon upload"
           labelFor="text-input"
           labelInfo="(required)"
         >
           <Dropzone onDrop={this.onDrop.bind(this)} className={"dropzone"}>
-            <DropzoneText>
-              {"Upload " + this.state.selected.slice(0, -1) + " Image..."}
-            </DropzoneText>
+            <DropzoneText>{"Upload an Image..."}</DropzoneText>
           </Dropzone>
         </FormGroup>
       </Container>
     );
   }
 }
+
+// <Select
+//   items={[{ name: "Springs" }, { name: "Wheels" }, { name: "Brakes" }]}
+//   itemRenderer={this.itemRenderer}
+//   onItemSelect={this.onItemSelect.bind(this)}
+//   filterable={false}
+// >
+//   <Button text={this.state.selected} rightIcon="caret-down" />
+// </Select>
+
+// {"Upload " + this.state.selected.slice(0, -1) + " Image..."}

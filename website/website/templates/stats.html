@@ -8,16 +8,23 @@
 <div id="home-wrapper">
 
   <section id="home-left-panel">
+    <a style="left: 0;
+    top: 0;
+    margin-top: 100px;
+    position: absolute;" href="{{url_for('home')}}">Back</a>
     <img style="height: 400px;" src="{{url_for('download_img', filename=filename)}}"/>
   </section>
 
   <section id="home-right-panel">
 
-    <input id="normal_pct" type=hidden value={{normal_pct}} />
-    <input id="broken_pct" type=hidden value={{broken_pct}} />
+    <input id="normal_pct" type=hidden value={{stats["results"][1]}} />
+    <input id="broken_pct" type=hidden value={{stats['results'][0]}} />
+
+    <input id="normal_label" type=hidden value={{stats["labels"][1]}} />
+    <input id="broken_label" type=hidden value={{stats['labels'][0]}} />
 
     <h3>
-      This looks like a <b><u>{{guess}}</u></b> 
+      This looks like a <b><u>{{guess}}</u></b>
     </h3>
 
 
