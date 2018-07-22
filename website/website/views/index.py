@@ -21,21 +21,8 @@ from website.config import IMAGES_FOLDER
 @app.route('/', methods = ['GET', 'POST'])
 def home():
     """Show homepage."""
-    context = {
-        'result': ''
-    }
 
-    # context['type'] = g.type if 'type' in g else 'before'
-    # session['type'] = 'before' if 'username' not in session else ''
-
-    if 'username' not in session:
-        session['type'] = 'before'
-
-    context['type'] = session['type']
-
-    print(context['type'])
-
-
+    #just save an upload
     if request.method == 'POST':
         file = request.files.get('file', '')
         filename = secure_filename(file.filename)
@@ -43,7 +30,7 @@ def home():
         file_dest = IMAGES_FOLDER + filename
         file.save(file_dest)
 
-    return render_template("index.html", **context)
+    return render_template("index.html")
 
 
 @app.route('/<filename>')
@@ -54,13 +41,24 @@ def test(filename):
         'result': ''
     }
 
-    file_dest = os.path.dirname(__file__) + '/uploads/' + filename
-    # results = run_image_label(file_dest, 'image_type')
-    results = [0.27753016, 0.7224698]
-    context['normal_pct'] = results[1]
-    context['broken_pct'] = results[0]
+    file_dest = IMAGES_FOLDER + filename
+    img_type = run_image_label(file_dest, 'all')
+
+    img_index = np.argmax(img_type['results'], axis=0)
+    print(img_index)
+
+    guess = img_type['labels'][img_index]
+    print(guess)
+
+    stats = run_image_label(file_dest, guess)
+    # results = [0.27753016, 0.7224698]
+    context['normal_pct'] = stats['results'][1]
+    context['broken_pct'] = stats['results'][0]
+
+    context['stats'] = stats
 
     context['filename'] = filename
+    context['guess'] = guess
 
     return render_template("stats.html", **context)
 
@@ -74,8 +72,8 @@ def run_image_label(file_name, image_type):
     input_layer = "input"
     output_layer = "InceptionV3/Predictions/Reshape_1"
 
-    model_file = os.path.dirname(__file__) + '/tf/retrained_graph.pb'
-    label_file = os.path.dirname(__file__) + '/tf/retrained_labels.txt'
+    model_file = os.path.dirname(__file__) + '/tf/' + image_type + '/retrained_graph.pb'
+    label_file = os.path.dirname(__file__) + '/tf/' + image_type + '/retrained_labels.txt'
     input_layer = "Placeholder"
     output_layer = "final_result"
 
@@ -105,7 +103,11 @@ def run_image_label(file_name, image_type):
     for i in top_k:
       print(labels[i], results[i])
 
-    return results
+    toreturn = dict()
+    toreturn['results'] = results
+    toreturn['labels'] = labels
+
+    return toreturn
 
 
 def load_graph(model_file):

@@ -16,17 +16,24 @@
     <input id="normal_pct" type=hidden value={{normal_pct}} />
     <input id="broken_pct" type=hidden value={{broken_pct}} />
 
+    <h3>
+      This looks like a <b><u>{{guess}}</u></b> 
+    </h3>
+
+
     <table id="results-table" class="pt-html-table pt-html-table-bordered pt-small pt-html-table-striped ">
       <thead>
         <tr>
-          <th>Normal</th>
-          <th>Broken</th>
+          <th>{{stats['labels'][1]}}</th>
+          <th>{{stats['labels'][0]}}</th>
         </tr>
       </thead>
+
+
       <tbody>
         <tr>
-          <td>{{normal_pct}}</td>
-          <td>{{broken_pct}}</td>
+          <td>{{stats['results'][1]}}</td>
+          <td>{{stats['results'][0]}}</td>
         </tr>
       </tbody>
     </table>

@@ -1,7 +1,7 @@
 """Helper methods used in jinja templates."""
 
 from website import app
-from website.config import IMAGES_FOLDER, UPLOADS_FOLDER
+from website.config import IMAGES_FOLDER
 
 from flask import send_from_directory
 

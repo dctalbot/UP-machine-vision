@@ -14,20 +14,20 @@ header {
     animation: choochoo 10s infinite;
   }
 
-  // @keyframes choochoo {
-  //   0% {
-  //     margin-left: -180px;
-  //     opacity: 1;
-  //   }
-  //
-  //   50% {
-  //     opacity: 1;
-  //   }
-  //   100% {
-  //     margin-left: 1000px;
-  //     opacity: 0;
-  //   }
-  // }
+  @keyframes choochoo {
+    0% {
+      margin-left: -180px;
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 1;
+    }
+    100% {
+      margin-left: 1000px;
+      opacity: 0;
+    }
+  }
 
   #title {
     position: absolute;
@@ -36,19 +36,19 @@ header {
     animation: titlefade 10s infinite;
   }
 
-  // @keyframes titlefade {
-  //   0% {
-  //     opacity: 0;
-  //   }
-  //   30% {
-  //     opacity: 0;
-  //   }
-  //
-  //   40% {
-  //     opacity: 1;
-  //   }
-  //   100% {
-  //     opacity: 1;
-  //   }
-  // }
+  @keyframes titlefade {
+    0% {
+      opacity: 0;
+    }
+    30% {
+      opacity: 0;
+    }
+
+    40% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
