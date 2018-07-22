@@ -6,20 +6,18 @@
 {% block content%}
 
 <div id="home-wrapper">
+
   <section id="home-left-panel">
-    <h1>
-      Union Pacific Image Classifier
-    </h1>
-    <p>
-      To get started, select an image type and upload an image
-    </p>
+    <div id="react-image-upload">Loading...</div>
   </section>
 
-
   <section id="home-right-panel">
+    <!-- <div id="react-image-stats">Loading...</div> -->
+    <p>
+      {{type}}
+    </p>
 
-    <div id="react-image-upload">Loading...</div>
-
+    <input type=hidden value ={{type}} />
   </section>
 
 </div>

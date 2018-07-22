@@ -9,7 +9,6 @@
 
   #home-left-panel {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
@@ -45,4 +44,8 @@ ul.pt-menu {
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px;
+}
+
+#react-image-upload {
+  width: 100%;
 }

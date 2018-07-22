@@ -45,91 +45,27 @@ export default class Upload extends React.Component {
     this.setState({ selected: item.name });
   }
 
-  handleUploadImage(ev) {
-    ev.preventDefault();
-
-    const data = new FormData();
-    data.append("file", this.uploadInput.files[0]);
-    data.append("filename", this.fileName.value);
-
-    fetch("http://localhost:5000/", {
-      method: "POST",
-      body: data
-    });
-  }
-
-  post(path, params) {
-    // The rest of this code assumes you are not using a library.
-    // It can be made less wordy if you use one.
-    var form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", path);
-
-    for (var key in params) {
-      if (params.hasOwnProperty(key)) {
-        var hiddenField = document.createElement("input");
-        hiddenField.setAttribute("type", "hidden");
-        hiddenField.setAttribute("name", key);
-        hiddenField.setAttribute("value", params[key]);
-
-        form.appendChild(hiddenField);
-      }
-    }
-
-    document.body.appendChild(form);
-    form.submit();
-  }
-
   onDrop(files) {
     this.setState({
       files: files
     });
-
-    // const data = new FormData();
-    // data.append("file", files[0]);
-    // data.append("filename", files[0].value);
-
-    // fetch("http://localhost:5000/", {
-    //   method: "POST",
-    //   body: data
-    // });
-
-    // $.ajax({
-    //   url: "/",
-    //   type: "POST",
-    //   data: data,
-    //   processData: false,
-    //   contentType: false,
-    //   success: function(response) {
-    //     console.log("success");
-    //   },
-    //   error: function(jqXHR, textStatus, errorMessage) {
-    //     console.log(errorMessage); // Optional
-    //   }
-    // });
 
     var XHR = new XMLHttpRequest();
     var FD = new FormData();
 
     // Push our data into our FormData object
     FD.append("file", files[0]);
-    FD.append("filename", files[0].value);
-
-    // Define what happens on successful data submission
-    // XHR.addEventListener("load", function(event) {
-    //   alert("Yeah! Data sent and response loaded.");
-    // });
-    //
-    // // Define what happens in case of error
-    // XHR.addEventListener("error", function(event) {
-    //   alert("Oops! Something went wrong.");
-    // });
+    // FD.append("filename", files[0].value);
 
     // Set up our request
     XHR.open("POST", "/");
 
     // Send our FormData object; HTTP headers are set automatically
     XHR.send(FD);
+
+    XHR.onreadystatechange = function() {
+      window.location = "/" + files[0].name;
+    };
   }
 
   render() {

@@ -3,44 +3,60 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import json, os
-
-import argparse
+import os, time
 
 import numpy as np
 import tensorflow as tf
 
 from website import app
 from werkzeug.utils import secure_filename
-from flask import jsonify, render_template, url_for, request
+from flask import render_template, url_for, request, redirect, g, session
 
 
 # ==============================
 # =======     ROUTING    =======
 # ==============================
 
-
 @app.route('/', methods = ['GET', 'POST'])
 def home():
     """Show homepage."""
+    context = {
+        'result': ''
+    }
+
+    # context['type'] = g.type if 'type' in g else 'before'
+    # session['type'] = 'before' if 'username' not in session else ''
+
+    if 'username' not in session:
+        session['type'] = 'before'
+
+    context['type'] = session['type']
+
+    print(context['type'])
+
 
     if request.method == 'POST':
         file = request.files.get('file', '')
         filename = secure_filename(file.filename)
         file_dest = os.path.dirname(__file__) + '/uploads/' + filename
         file.save(file_dest)
-        run_image_label(file_dest, 'image_type')
 
-        # print(request.files.get('file', '').name
-    return render_template("index.html")
+    return render_template("index.html", **context)
 
-# ==============================
-# ===   DEPLOYMENT HELPERS   ===
-# ==============================
 
-# healthcheck
-# some other docker stuff
+@app.route('/<filename>')
+def test(filename):
+    """Show homepage."""
+    context = {
+        'type': 'before',
+        'result': ''
+    }
 
+    file_dest = os.path.dirname(__file__) + '/uploads/' + filename
+    result = run_image_label(file_dest, 'image_type')
+    context['type'] = result
+
+    return render_template("index.html", **context)
 
 
 def run_image_label(file_name, image_type):
@@ -78,9 +94,12 @@ def run_image_label(file_name, image_type):
 
     top_k = results.argsort()[-5:][::-1]
     labels = load_labels(label_file)
+
+    # table of label, percent pairs
     for i in top_k:
       print(labels[i], results[i])
 
+    return results[1]
 
 
 def load_graph(model_file):

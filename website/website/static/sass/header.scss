@@ -1,4 +1,4 @@
-@import 'globals';
+@import "globals";
 
 header {
   height: 100px;
@@ -10,5 +10,45 @@ header {
     height: 30px;
     display: inline-block;
     vertical-align: middle;
+    position: relative;
+    animation: choochoo 10s infinite;
   }
+
+  // @keyframes choochoo {
+  //   0% {
+  //     margin-left: -180px;
+  //     opacity: 1;
+  //   }
+  //
+  //   50% {
+  //     opacity: 1;
+  //   }
+  //   100% {
+  //     margin-left: 1000px;
+  //     opacity: 0;
+  //   }
+  // }
+
+  #title {
+    position: absolute;
+    margin-top: -50px;
+    color: #ecac00;
+    animation: titlefade 10s infinite;
+  }
+
+  // @keyframes titlefade {
+  //   0% {
+  //     opacity: 0;
+  //   }
+  //   30% {
+  //     opacity: 0;
+  //   }
+  //
+  //   40% {
+  //     opacity: 1;
+  //   }
+  //   100% {
+  //     opacity: 1;
+  //   }
+  // }
 }
