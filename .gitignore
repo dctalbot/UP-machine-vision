@@ -8,3 +8,4 @@
 /website/node_modules
 *.png
 /node_modules
+.DS_Store
